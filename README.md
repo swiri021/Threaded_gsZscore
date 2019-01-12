@@ -2,6 +2,8 @@
 Threaded Gene-set Zscore by using decorator
 Zscore Calculation with Gene-set by using decorator
 
+(It needs update for controlling Thread number)
+
 # Example :
 ```Python
 import pandas as pd
@@ -16,6 +18,6 @@ df.index = df.index.astype(int).astype(str)
 zscore_calculator = calculator(df)
 
 #### Input list should be EntrezIDs
-result = zscore_calculator.gs_zscore(df, nthread=6, gene_set=['9480', '367', '2137'])
+result = zscore_calculator.gs_zscore(df, gene_set=['9480', '367', '2137'])
 print result
 ```
