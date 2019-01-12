@@ -1,7 +1,5 @@
 # Threaded_gsZscore
-Threaded Gene-set Zscore(Or Pathway Score) by using decorator
-Zscore Calculation with Gene-set by using decorator
-
+Threaded Gene-set Zscore(Or Pathway Score) by using decorator.
 (It needs update for controlling Thread number)
 
 # Example :
