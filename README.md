@@ -1,6 +1,5 @@
 # Threaded_gsZscore
 Threaded Gene-set Zscore(Or Pathway Score) by using decorator.
-(It needs update for controlling Thread number)
 
 # Example :
 ```Python
@@ -16,6 +15,6 @@ df.index = df.index.astype(int).astype(str)
 zscore_calculator = calculator(df)
 
 #### Input list should be EntrezIDs(Pathways)
-result = zscore_calculator.gs_zscore(df, gene_set=['9480', '367', '2137'])
+result = zscore_calculator.gs_zscore(df, nthread=4, gene_set=['9480', '367', '2137'])
 print result
 ```
