@@ -15,15 +15,15 @@ class funcThread(object):
             threads = [None]*kwargs['nthread']
             container = [None]*kwargs['nthread']
 
-            ####Divide Samples
+            ####Divide Samples by number of threads
             i_col = len(args[1].columns.tolist())
             contents_numb = i_col/kwargs['nthread']
             split_columns = [args[1].columns.tolist()[i:i+contents_numb] for i in range(0, len(args[1].columns.tolist()), contents_numb)]
-
             if len(split_columns)>kwargs['nthread']:
                 split_columns[len(split_columns)-2] = split_columns[len(split_columns)-2]+split_columns[len(split_columns)-1]
                 split_columns = split_columns[:len(split_columns)-1]
 
+            ####Running threads
             for i, item in enumerate(split_columns):
                 threads[i] = threading.Thread(target = func, args=(args[0], args[1].ix[:,item], container, i), kwargs=kwargs)
                 threads[i].start()
@@ -40,10 +40,16 @@ class calculator(object):
     def __init__(self, df):
         if df.empty:
             raise ValueError("Input Dataframe is empty, please try with different one.")
+        else:
+            self.df = df
 
     # Wrapper for controlling Threads
-    def gs_zscore(self, arr1, nthread=5, gene_set=[]):
-        return self._calculating(arr1, None, None, nthread=nthread, gene_set=gene_set)
+    def gs_zscore(self, nthread=5, gene_set=[]):
+        arr1 = self.df
+        container = None
+        i = None
+
+        return self._calculating(arr1, container, i, nthread=nthread, gene_set=gene_set)
 
     # function structure
     # args(input, container, thread_index , **kwargs)
