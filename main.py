@@ -9,4 +9,6 @@ df.index = df.index.astype(int).astype(str)
 zscore_calculator = calculator(df)
 
 #### Input list should be EntrezIDs
-result = zscore_calculator.gs_zscore(df, gene_set=['9480', '367', '2137'])
+result = zscore_calculator.gs_zscore(nthread=5, gene_set=['9480', '367', '2137'])
+
+print result
