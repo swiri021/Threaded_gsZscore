@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 import threading
 import functools
+import itertools
 
 class funcThread(object):
     def __init__(self):
@@ -20,8 +21,9 @@ class funcThread(object):
             contents_numb = i_col/kwargs['nthread']
             split_columns = [args[1].columns.tolist()[i:i+contents_numb] for i in range(0, len(args[1].columns.tolist()), contents_numb)]
             if len(split_columns)>kwargs['nthread']:
-                split_columns[len(split_columns)-2] = split_columns[len(split_columns)-2]+split_columns[len(split_columns)-1]
-                split_columns = split_columns[:len(split_columns)-1]
+                split_columns = split_columns[:kwargs['nthread']-1] + [list(itertools.chain(*split_columns[kwargs['nthread']-1:]))]
+                #split_columns[len(split_columns)-2] = split_columns[len(split_columns)-2]+split_columns[len(split_columns)-1]
+                #split_columns = split_columns[:len(split_columns)-1]
 
             ####Running threads
             for i, item in enumerate(split_columns):
