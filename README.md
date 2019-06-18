@@ -1,5 +1,7 @@
 # Threaded_gsZscore
 Threaded Gene-set Zscore(Or Pathway Score) by using decorator.
+# reference
+[Pathway and gene-set activation measurement from mRNA expression data: the tissue distribution of human pathways](https://genomebiology.biomedcentral.com/articles/10.1186/gb-2006-7-10-r93)
 
 # Example :
 ```Python
